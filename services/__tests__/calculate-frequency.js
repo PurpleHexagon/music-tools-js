@@ -9,7 +9,7 @@ describe("calculate-frequency", () => {
         expect(frequency).to.be.a('String')
     })
 
-    it('returns note of A4 when interval is 9 and octave is 4', () => {
+    it('returns correct frequency for C4', () => {
         const frequency = calculateFrequency(0, 4)
         expect(frequency).to.eql('261.6255653005986347')
     })
