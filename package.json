@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mathjs": "^6.5.0",
     "ramda": "^0.24.1"
   },
   "devDependencies": {
