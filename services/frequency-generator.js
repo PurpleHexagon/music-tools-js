@@ -1,8 +1,6 @@
 import calculateFrequency from "./calculate-frequency";
 import determineNote from "./determine-note";
 
-const A_FOUR_FREQUENCY = 440
-const C_FOUR_FREQUENCY = calculateFrequency(A_FOUR_FREQUENCY, 3, 3)
 const MAX_INTERVAL = 12
 
 /**
@@ -15,7 +13,7 @@ function* frequencyGenerator(octave) {
     while (interval < MAX_INTERVAL) {
         yield {
             note: determineNote(interval, octave),
-            frequency: calculateFrequency(C_FOUR_FREQUENCY, interval, octave)
+            frequency: calculateFrequency(interval, octave)
         }
         interval++
     }

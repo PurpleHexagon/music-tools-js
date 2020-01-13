@@ -1,4 +1,6 @@
 import { add, bignumber, divide, format, multiply, pow, subtract } from 'mathjs'
+import { curry } from 'ramda'
+
 /**
  * Calculate frequency for interval and octave
  *
@@ -9,7 +11,7 @@ import { add, bignumber, divide, format, multiply, pow, subtract } from 'mathjs'
  * @param octave
  * @returns {number}
  */
-const calculateFrequency = (referenceFrequency, interval, octave) => (
+const calculateFrequency = curry((referenceFrequency, interval, octave) => (
     format(
         multiply(
             referenceFrequency,
@@ -23,6 +25,9 @@ const calculateFrequency = (referenceFrequency, interval, octave) => (
         ),
         { notation: 'fixed', precision: 16 }
     ).toString()
-)
+))
 
-export default calculateFrequency
+const A_FOUR_FREQUENCY = 440
+const C_FOUR_FREQUENCY = calculateFrequency(A_FOUR_FREQUENCY, 3, 3)
+
+export default calculateFrequency(C_FOUR_FREQUENCY)
