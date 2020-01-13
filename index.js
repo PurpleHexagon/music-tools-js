@@ -1,6 +1,4 @@
 import { times } from 'ramda'
-import determineNote from './services/determine-note'
-import calculateFrequency from './services/calculate-frequency'
 import frequencyGenerator from './services/frequency-generator'
 
 const OCTAVES_TO_DISPLAY = 9
