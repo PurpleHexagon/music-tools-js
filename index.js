@@ -1,25 +1,11 @@
-import { concat, nth, times } from 'ramda'
+import { times } from 'ramda'
+import determineNote from './services/determine-note';
 
 const fkv = (fR, k, v ) => (fR * 2 ** ((v - 4) + (k / 12)))
 const A_FOUR_FREQUENCY = 440
 const C_FOUR_FREQUENCY = fkv(A_FOUR_FREQUENCY, 3, 3)
 const OCTAVES_TO_DISPLAY = 9
 let currentNote
-
-/**
- * Returns the note as string, EG: A4
- * @param interval
- * @param octave
- * @returns String
- */
-function determineNote(interval, octave) {
-  const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
-
-  return concat(
-    nth(interval, NOTES),
-    String(octave)
-  )
-}
 
 /**
  * Generate frequencies for the octave
