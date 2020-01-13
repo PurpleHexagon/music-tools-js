@@ -16,13 +16,8 @@ const calculateFrequency = (referenceFrequency, interval, octave) => (
             pow(
                 bignumber('2'),
                 add(
-                    subtract(
-                        octave, bignumber('4')
-                    ),
-                    divide(
-                        interval,
-                        bignumber('12')
-                    )
+                    subtract(octave, bignumber('4')),
+                    divide(interval, bignumber('12'))
                 )
             )
         ),
