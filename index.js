@@ -1,11 +1,10 @@
 import { times } from 'ramda'
-import determineNote from './services/determine-note';
+import determineNote from './services/determine-note'
+import calculateFrequency from './services/calculate-frequency'
 
-const fkv = (fR, k, v ) => (fR * 2 ** ((v - 4) + (k / 12)))
 const A_FOUR_FREQUENCY = 440
-const C_FOUR_FREQUENCY = fkv(A_FOUR_FREQUENCY, 3, 3)
+const C_FOUR_FREQUENCY = calculateFrequency(A_FOUR_FREQUENCY, 3, 3)
 const OCTAVES_TO_DISPLAY = 9
-let currentNote
 
 /**
  * Generate frequencies for the octave
@@ -15,8 +14,10 @@ let currentNote
 function* frequencyGenerator(octave) {
   let interval = 0
   while (interval < 12) {
-    currentNote = determineNote(interval, octave)
-    yield fkv(C_FOUR_FREQUENCY, interval, octave)
+    yield {
+      note: determineNote(interval, octave),
+      frequency: calculateFrequency(C_FOUR_FREQUENCY, interval, octave)
+    }
     interval++
   }
   if (interval === 12) {
@@ -29,9 +30,9 @@ function* frequencyGenerator(octave) {
  * @param octave
  */
 function octaveGenerator(octave) {
-  for (const frequency of frequencyGenerator(octave)) {
-    console.log(currentNote)
-    console.log(frequency)
+  for (const container of frequencyGenerator(octave)) {
+    console.log(container.frequency)
+    console.log(container.note)
   }
 }
 
