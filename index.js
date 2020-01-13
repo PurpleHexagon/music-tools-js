@@ -1,4 +1,6 @@
 import { times } from 'ramda'
+import determineNote from './services/determine-note'
+import calculateFrequency from './services/calculate-frequency'
 import frequencyGenerator from './services/frequency-generator'
 
 const OCTAVES_TO_DISPLAY = 9
@@ -9,8 +11,8 @@ const OCTAVES_TO_DISPLAY = 9
  */
 function octaveGenerator(octave) {
   for (const container of frequencyGenerator(octave)) {
-    console.log(container.frequency)
     console.log(container.note)
+    console.log(container.frequency)
   }
 }
 
